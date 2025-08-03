@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Todo } from '@/types/todo';
 
-const API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyBhMugAN4LGc2EVRNNEbkp0Z7gQNdktxtI';
+const API_KEY = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 export class GeminiService {
