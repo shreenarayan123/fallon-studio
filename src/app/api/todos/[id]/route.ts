@@ -4,11 +4,12 @@ import { Priority } from '@prisma/client';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const todo = await prisma.todo.findUnique({
-      where: { id: params.id }
+      where: { id }
     });
 
     if (!todo) {
@@ -30,9 +31,10 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const { title, description, completed, priority, tags } = body;
 
@@ -44,7 +46,7 @@ export async function PATCH(
     if (tags !== undefined) updateData.tags = tags;
 
     const todo = await prisma.todo.update({
-      where: { id: params.id },
+      where: { id },
       data: updateData,
     });
 
@@ -60,11 +62,12 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await prisma.todo.delete({
-      where: { id: params.id }
+      where: { id }
     });
 
     return NextResponse.json(

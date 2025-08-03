@@ -12,7 +12,10 @@ export interface TodoType {
   text: string
   completed: boolean
   priority: "high" | "medium" | "low"
+  description?: string
+  tags: string[]
   createdAt: Date
+  updatedAt?: Date
 }
 
 export default function Todo() {
@@ -42,6 +45,8 @@ export default function Todo() {
       text,
       completed: false,
       priority,
+      description: "",
+      tags: [],
       createdAt: new Date(),
     }
     setTodos((prev) => [newTodo, ...prev])

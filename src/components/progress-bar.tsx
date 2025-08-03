@@ -8,7 +8,7 @@ interface ProgressBarProps {
 
 export function ProgressBar({ completed, total, percentage }: ProgressBarProps) {
   return (
-    <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-gray-200 p-6 shadow-lg">
+    <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-gray-200 p-6 shadow-lg md:w-[60%]">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <TrendingUp className="w-6 h-6 text-sky-600" />

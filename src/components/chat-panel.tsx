@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
 import { Send, Bot, User, Loader2, Zap } from "lucide-react"
-import type { Todo } from "@/app/page"
+import type { Todo } from "@/hooks/useBackendTodos"
 
 interface Message {
   id: string
@@ -97,11 +97,6 @@ export function ChatPanel({ todos, isOpen, onClose }: ChatPanelProps) {
 
   return (
     <div className="h-96 flex flex-col">
-      {/* Chat Panel Header */}
-      <div className="p-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-500">
-        <Zap className="w-5 h-5 text-white" />
-      </div>
-
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
         {messages.map((message) => (
